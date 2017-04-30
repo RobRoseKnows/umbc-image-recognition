@@ -1,3 +1,5 @@
+card_title: |
+    Eyelexa
 
 amazon_ai_high: |
     Amazon is confident that you're looking at <break /> {{ things_seen }}
@@ -12,14 +14,14 @@ google_ai_read_small: |
     Google read the following text <break /> {{ text }}
 
 google_ai_read_large: |
-    Google read a lot of text so I sent all of it to your Alexa App. Would 
-    you like me to summarize it for you?
+    Google read a lot of text so I sent all of it to your Alexa App. Here's 
+    the start of it <break /> {{ text }}
 
 text_summary: |
     I summarized the text into this snippet <break /> {{ summary }}
 
-error_no_img: |
-    There was an issue in sending your photo.
+error_no_txt: |
+    There doesn't seem to be any text in front of you.
 error_auth: |
     I had some trouble with authentication. Can you check to make sure all
     the correct API keys are listed in the application?
