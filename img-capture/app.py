@@ -1,5 +1,7 @@
 from flask import Flask, request
 import boto
+from SimpleCV import Image, Camera
+import time
 from boto.s3.key import Key
 import uuid
 
@@ -8,13 +10,24 @@ app.config.from_object('config')
 
 lastUploadedFile = 0
 
+def get_image_name():
+    #return image name as currenttime.jpg
+    epoch_time = int(time.time())
+    return epoch_time + ".jpg"
+
+
 def take_photo(fileName=0):
-    return 
+    if(fileName == 0):
+        return fileName
+    cam = Camera()
+    img = cam.getImage()
+    img.save(fileName)
+    return fileName
 
 @app.route('/img', methods=['POST', 'GET'])
 def upload_img():
-    if(request.method == 'GET' 
-            && request.args["key"] == app.config["AUTH_KEY"]):
+    if(request.method == 'POST' 
+            and request.form["key"] == app.config["AUTH_KEY"]):
         
         # Create connection to Amazon S3
         s3 = boto.s3.connect_s3(app.config["S3_KEY"], app.config["S3_SECRET"])
