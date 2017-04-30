@@ -1,21 +1,22 @@
 card_title: |
     Eyelexa
 
-amazon_ai_high: |
-    Amazon is confident that you're looking at <break /> {{ things_seen }}
-
-amazon_ai_specific: |
-    Were you looking for anything specific?
-
-amazon_ai_more: |
-    Alright. Would you like to hear more things Amazon saw?
+ms_saw: |
+    <speak>
+        Microsoft saw <break /> {{ text }}
+    </speak>
 
 google_ai_read_small: |
-    Google read the following text <break /> {{ text }}
+    <speak>
+        Google <w role="amazon:VBD">read</w> the following text <break /> 
+        {{ text }}
+    </speak>
 
 google_ai_read_large: |
-    Google read a lot of text so I sent all of it to your Alexa App. Here's 
-    the start of it <break /> {{ text }}
+    <speak>
+        Google <w role="amazon:VBD">read</w> a lot of text so I sent all of it
+        to your Alexa App. Here's the start of it <break /> {{ text }}
+    </speak>
 
 text_summary: |
     I summarized the text into this snippet <break /> {{ summary }}

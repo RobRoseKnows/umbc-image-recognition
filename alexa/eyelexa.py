@@ -51,7 +51,32 @@ def noIntent():
 @ask.intent("DescribeIntent")
 def describeIntent():
     #session.attributes[constants.CURR_TASK] = AskTasks.desc_intent
-    return
+    card_title = render_template('card_title')
+
+    photoUrl = getters.getPhoto()
+
+    if(photoUrl == ""):
+        # This isn't as much of an error as it is a just a lack of text
+        err_msg = render_template('err_no_txt')
+        return statement(err_msg)
+    # These two are general errors that might be triggered by different
+    # things happening. They aren't very helpful, this is a hackathon.
+    elif(photoUrl == "IMG_ERROR"):
+        err_msg = render_template('err_img')
+        return statement(err_msg)
+    elif(photoUrl == "AUTH_ERROR"):
+        err_msg = render_template('err_auth')
+        return statement(err_msg)
+    else:
+        # Send our image to Google and get the text back
+        msReply = getters.getImageDesc(photoUrl)
+        
+        # If a lot of text is returned, we'll only take the first tweet and a
+        # half. We send all of it to the Alexa app though.
+        message = render_template(constants.MS_SAW, text=msReply)
+        
+        # Return the statement and send the thing to the card.
+        return statement(message).simple_card(card_title, msReply)
 
 
 @ask.intent("ReadIntent")

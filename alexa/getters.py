@@ -7,11 +7,10 @@ import urllib
 import urllib2
 import os
 
+import constants
 
-endpoint_url = "https://omh5gu7ow3.execute-api.us-east-2.amazonaws.com/dev/processmessage"
+endpoint_url = os.environ["ENDPOINT_URL"]
 def getImageText(url):
-
-
     try:
         data = {"inputMessage": {
                     "Url": url
@@ -21,12 +20,41 @@ def getImageText(url):
         headers = {"Content-Type": "application/json"
         }
         
-        request = urllib2.Request(endpoint_url, data = json.dumps(data), headers = headers)
+        request = urllib2.Request(
+                endpoint_url + constants.READ_TEXT, 
+                data = json.dumps(data), 
+                headers = headers)
         response = urllib2.urlopen(request)
         
-        print('Response text: {} \nResponse status: {}'.format(response.read(), response.getcode()))
+        toReturn = response.read()
 
-        return response.read()
+        print('Response text: {} \nResponse status: {}'.format(toReturn, response.getcode()))
+
+        return toReturn
+    except Exception as e:
+        print(e)
+
+def getImageDesc(url):
+    try:
+        data = {"inputMessage": {
+                    "Url": url
+            }
+        }
+
+        headers = {"Content-Type": "application/json"}
+
+        request = urllib2.Request(
+                endpoint_url + constants.DESC_PICT, 
+                data =json.dumps(data), 
+                headers = headers)
+        response = urllib2.urlopen(request)
+
+        toReturn = response.read()
+
+        print('Response text: {} \nResponse status: {}'
+                .format(toReturn, response.getcode()))
+
+        return toReturn
     except Exception as e:
         print(e)
 
@@ -40,14 +68,14 @@ def getPhoto():
             }
         }
 
-        headers = {"Content-Type": "application/json",
+        headers = {"Content-Type": "application/json"
         }
         # Invoke Cloud Endpoints API
         request = urllib2.Request(os.environ["NGROK_URL"], data = json.dumps(data), headers = headers)
         response = urllib2.urlopen(request)
         
-        print(response.read())
-        return response.read()
+        photoUrl = response.read()
+        return photoUrl
         
     except Exception as e:
         print(e)
