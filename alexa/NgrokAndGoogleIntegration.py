@@ -8,10 +8,11 @@ import urllib2
 import os
 
 
-endpoint_url = "https://omh5gu7ow3.execute-api.us-east-2.amazonaws.com/dev/processmessage"
+endpoint_url = "https://zst3wk2pvc.execute-api.us-east-1.amazonaws.com/dev/processmessage"
 def getImageText(url):
 
 
+    print (url)
     try:
         data = {"inputMessage": {
                     "Url": url
@@ -23,10 +24,10 @@ def getImageText(url):
         
         request = urllib2.Request(endpoint_url, data = json.dumps(data), headers = headers)
         response = urllib2.urlopen(request)
-        
-        print('Response text: {} \nResponse status: {}'.format(response.read(), response.getcode()))
+        toReturn = response.read()
+        print('Response text: {} \nResponse status: {}'.format(toReturn, response.getcode()))
 
-        return response.read()
+        return toReturn
     except Exception as e:
         print(e)
 
@@ -46,7 +47,6 @@ def getPhoto():
         request = urllib2.Request(os.environ["NGROK_URL"], data = json.dumps(data), headers = headers)
         response = urllib2.urlopen(request)
         
-        print(response.read())
         return response.read()
         
     except Exception as e:
@@ -55,4 +55,6 @@ def getPhoto():
         raise e
 
 def lambda_handler(event, context):
-    return getImageText(getPhoto())
+    string = getImageText(getPhoto())
+    print (string)
+    return string
