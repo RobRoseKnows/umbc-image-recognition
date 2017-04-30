@@ -22,22 +22,14 @@ ReadIntent read that to me
 ReadIntent read that
 ReadIntent what does this say
 
-SummarizeIntent yes
-SummarizeIntent please do
-SummarizeIntent go ahead
-SummarizeIntent alright
-SummarizeIntent yeah
-SummarizeIntent summarize this
-SummarizeIntent give me an overview
-SummarizeIntent okay
-SummarizeIntent o. k.
-SummarizeIntent briefly
-SummarizeIntent yes please
-SummarizeIntent sounds good
-
-NoSummaryIntent no
-NoSummaryIntent no thank you
-NoSummaryIntent nah
-NoSummaryIntent no need
-NoSummaryIntent dont bother
-
+SpecificIntent I was looking for { ThingWanted } 
+SpecificIntent { ThingWanted }
+SpecificIntent do you see { ThingWanted }
+SpecificIntent is there a { ThingWanted }
+SpecificIntent have you found a { ThingWanted }
+SpecificIntent have you seen a { ThingWanted }
+SpecificIntent are there any { ThingWanted }
+SpecificIntent I want a { ThingWanted }
+SpecificIntent are there { ThingWanted }
+SpecificIntent a { ThingWanted }
+SpecificIntent the { ThingWanted }
