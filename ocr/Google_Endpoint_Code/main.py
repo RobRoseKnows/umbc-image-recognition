@@ -75,6 +75,10 @@ def process():
     #text = detect_text_uri(message.Url)
     return jsonify({'In app code for endpoint, received message': message})
 
+@app.route('/')
+def test():
+    return "Testing 123"
+
 
 @app.errorhandler(http_client.INTERNAL_SERVER_ERROR)
 def unexpected_error(e):
@@ -90,4 +94,4 @@ def unexpected_error(e):
 if __name__ == '__main__':
     # This is used when running locally. Gunicorn is used to run the
     # application on Google App Engine. See entrypoint in app.yaml.
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run()
