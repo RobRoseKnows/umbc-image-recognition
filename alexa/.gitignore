@@ -1,2 +1,3 @@
-alexa-eyes/
+env/
 config.py
+zappa_settings.json

@@ -12,7 +12,7 @@ import Algorithmia
 
 # My very own files.
 import constants
-from constants import AskTasks 
+#from constants import AskTasks 
 import getters
 
 app = Flask(__name__)
@@ -50,14 +50,16 @@ def noIntent():
 
 @ask.intent("DescribeIntent")
 def describeIntent():
-    session.attributes[constants.CURR_TASK] = AskTasks.desc
+    #session.attributes[constants.CURR_TASK] = AskTasks.desc_intent
     return
 
 
 @ask.intent("ReadIntent")
 def readIntent():
-    session.attributes[constants.CURR_TASK] = AskTasks.read
+    #session.attributes[constants.CURR_TASK] = AskTasks.read_intent
     
+    #return statement("This is the read intent")
+
     card_title = render_template('card_title')
 
     photoUrl = getters.getPhoto()
@@ -75,9 +77,8 @@ def readIntent():
         err_msg = render_template('err_auth')
         return statement(err_msg)
     else:
-       `
         # Send our image to Google and get the text back
-        googleReply = getters.sendToGoogle(photoUrl)
+        googleReply = getters.getImageText(photoUrl)
         
         # If a lot of text is returned, we'll only take the first tweet and a
         # half. We send all of it to the Alexa app though.
