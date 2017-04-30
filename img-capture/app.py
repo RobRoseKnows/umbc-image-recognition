@@ -13,8 +13,8 @@ def take_photo(fileName=0):
 
 @app.route('/img', methods=['POST', 'GET'])
 def upload_img():
-    if(request.method == 'POST' 
-            && request.form["key"] == app.config["AUTH_KEY"]):
+    if(request.method == 'GET' 
+            && request.args["key"] == app.config["AUTH_KEY"]):
         
         # Create connection to Amazon S3
         s3 = boto.s3.connect_s3(app.config["S3_KEY"], app.config["S3_SECRET"])
@@ -35,7 +35,7 @@ def upload_img():
         img_file = take_photo(fileName)
         
         # Default
-        toReturn = "IMG ERROR"
+        toReturn = "IMG_ERROR"
 
 
         if img_file != None:
@@ -46,7 +46,7 @@ def upload_img():
 
         return str(fileNameWithDir)
 
-    return "AUTH ERROR"
+    return "AUTH_ERROR"
 
 
 
