@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash
+from flask import Flask, request
 import boto
 from boto.s3.key import Key
 import uuid
@@ -13,7 +13,8 @@ def take_photo(fileName=0):
 
 @app.route('/img', methods=['POST', 'GET'])
 def upload_img():
-    if request.method == 'POST':
+    if(request.method == 'POST' 
+            && request.form["key"] == app.config["AUTH_KEY"]):
         
         # Create connection to Amazon S3
         s3 = boto.s3.connect_s3(app.config["S3_KEY"], app.config["S3_SECRET"])
@@ -34,7 +35,7 @@ def upload_img():
         img_file = take_photo(fileName)
         
         # Default
-        toReturn = "ERROR"
+        toReturn = "IMG ERROR"
 
 
         if img_file != None:
@@ -45,7 +46,7 @@ def upload_img():
 
         return str(fileNameWithDir)
 
-    return "ERROR"
+    return "AUTH ERROR"
 
 
 
