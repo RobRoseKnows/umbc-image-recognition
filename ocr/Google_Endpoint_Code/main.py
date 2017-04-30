@@ -66,17 +66,17 @@ def detect_text_uri(uri):
 
 
 @app.route('/processmessage', methods=['POST'])
-def process():
+def process(event=None, context=None):
     """Process messages with information about S3 objects"""
     message = request.get_json().get('inputMessage', '')
     # add other processing as needed
     # for example, add event to PubSub topic or 
     # download object using presigned URL, save in Cloud Storage, invoke ML APIs
-    #text = detect_text_uri(message.Url)
-    return jsonify({'In app code for endpoint, received message': message})
+    text = detect_text_uri(message["Url"])
+    return text
 
 @app.route('/')
-def test():
+def test(event=None, context=None):
     return "Testing 123"
 
 
@@ -94,4 +94,4 @@ def unexpected_error(e):
 if __name__ == '__main__':
     # This is used when running locally. Gunicorn is used to run the
     # application on Google App Engine. See entrypoint in app.yaml.
-    app.run()
+    app.run(debug=True)

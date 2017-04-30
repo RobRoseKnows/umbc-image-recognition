@@ -2,5 +2,8 @@
     "dev": {
         "app_function": "main.app", 
         "s3_bucket": "zappa-o4jmdcsy1"
+	"environment_variables": {
+	    "GOOGLE_APPLICATION_CREDENTIALS": "./EyeLexa-135c041a9af2.json"
+	}
     }
 }
