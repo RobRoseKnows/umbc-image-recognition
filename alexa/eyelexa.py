@@ -2,15 +2,17 @@
 import boto3
 import logging
 import os
-import json
-import urllib
-import urllib2
 
-from flask import Flask
+# Flask stuff
+from flask import Flask, json, render_template
 from flask_ask import Ask, request, session, question, statement
 
-# Doing this because there's also a "request" object in flask ask
-import requests as _reqs
+# This is for the summarizer
+import Algorithmia
+
+# My very own files.
+import constants
+import getters
 
 app = Flask(__name__)
 ask = Ask(app, "/alexa")
@@ -23,13 +25,39 @@ def launch():
 
     return
 
+@ask.intent("AMAZON.CancelIntent")
+def cancelIntent():
+
+    return
+
+@ask.intent("AMAZON.HelpIntent")
+def helpIntent():
+
+    return
+
+
+@ask.intent("AMAZON.StopIntent")
+def stopIntent():
+
+    return
+
+
+@ask.intent("AMAZON.YesIntent")
+def yesIntent():
+
+    return
+
+@ask.intent("AMAZON.NoIntent")
+def noIntent():
+
+    return
+
 
 @ask.intent("DescribeIntent")
 def describeIntent():
 
     
     return
-
 
 
 @ask.intent("ReadIntent")
@@ -39,7 +67,7 @@ def readIntent():
 
     if(photoUrl == ""):
         return statement(
-                "I encountered an error while checking for your image.")
+                "I encountered an error while checking for your image. ")
     elif(photoUrl == "IMG_ERROR"):
         return statement(
                 "I encountered an error while retrieving your image."
@@ -48,44 +76,10 @@ def readIntent():
                 "I encountered an error while requesting your image.")
     else:
         googleReply = sendToGoogle(photoUrl)
-        
-    
+         
         return ""
 
 @ask.intent("SummarizeIntent")
 def summarizeIntent():
-    
-
-def sendToGoogle(url):
-
-    try:
-        data = {"inputMessage": {
-            "Url": url
-            }
-        }
-
-        headers = {"Content-Type": "application/json",
-            "x-api-key": os.environ["ENDPOINT_KEY"]
-        }
-
-        googleReply = _reqs.post(os.environ["ENDPOINT_URL"], 
-            headers=headers, data=data)
-
-        return googleReply
-    except Exception as e:
-        print(e)
-        print('Error integrating lambda function with endpoint for url {}'
-            .format(url)
-        raise e
-
-
-# Calls the laptop using ngrok and then 
-# Returns: a URL to the photo in S3.
-def getPhoto():
-    try:
-        photoUrl = _reqs.get(
-                os.environ["NGROK_URL"], 
-                { 'key': os.environ["NGROK_AUTH_KEY"] + })
-
     
 

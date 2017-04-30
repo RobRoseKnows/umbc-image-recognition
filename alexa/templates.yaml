@@ -1,0 +1,29 @@
+
+amazon_ai_high: |
+    Amazon is confident that you're looking at <break /> {{ things_seen }}
+
+amazon_ai_specific: |
+    Were you looking for anything specific?
+
+amazon_ai_more: |
+    Alright. Would you like to hear more things Amazon saw?
+
+google_ai_read_small: |
+    Google read the following text <break /> {{ text }}
+
+google_ai_read_large: |
+    Google read a lot of text so I sent all of it to your Alexa App. Would 
+    you like me to summarize it for you?
+
+text_summary: |
+    I summarized the text into this snippet <break /> {{ summary }}
+
+error_no_img: |
+    There was an issue in sending your photo.
+error_auth: |
+    I had some trouble with authentication. Can you check to make sure all
+    the correct API keys are listed in the application?
+error_img: |
+    Looks like I had some trouble with the image capture. Can you make sure
+    the camera is working?
+    
