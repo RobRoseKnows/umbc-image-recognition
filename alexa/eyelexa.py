@@ -33,7 +33,7 @@ def describeIntent():
 
 
 @ask.intent("ReadIntent")
-def readIntent:
+def readIntent():
     
     photoUrl = getPhoto()
 
@@ -52,6 +52,9 @@ def readIntent:
     
         return ""
 
+@ask.intent("SummarizeIntent")
+def summarizeIntent():
+    
 
 def sendToGoogle(url):
 
@@ -62,10 +65,11 @@ def sendToGoogle(url):
         }
 
         headers = {"Content-Type": "application/json",
-            "x-api-key": app.config["ENDPOINT_KEY"]
+            "x-api-key": os.environ["ENDPOINT_KEY"]
         }
 
-        googleReply = _reqs.post(ENDPOINT_URL, headers=headers, data=data)
+        googleReply = _reqs.post(os.environ["ENDPOINT_URL"], 
+            headers=headers, data=data)
 
         return googleReply
     except Exception as e:
@@ -74,17 +78,14 @@ def sendToGoogle(url):
             .format(url)
         raise e
 
-    
-
-
 
 # Calls the laptop using ngrok and then 
 # Returns: a URL to the photo in S3.
 def getPhoto():
     try:
         photoUrl = _reqs.get(
-                app.config["NGROK_URL"], 
-                "{ 'key':" + app.config["AUTH_KEY"] + " }")
+                os.environ["NGROK_URL"], 
+                { 'key': os.environ["NGROK_AUTH_KEY"] + })
 
     
 
