@@ -21,3 +21,23 @@ ReadIntent tell me what that says
 ReadIntent read that to me
 ReadIntent read that
 ReadIntent what does this say
+
+SummarizeIntent yes
+SummarizeIntent please do
+SummarizeIntent go ahead
+SummarizeIntent alright
+SummarizeIntent yeah
+SummarizeIntent summarize this
+SummarizeIntent give me an overview
+SummarizeIntent okay
+SummarizeIntent o. k.
+SummarizeIntent briefly
+SummarizeIntent yes please
+SummarizeIntent sounds good
+
+NoSummaryIntent no
+NoSummaryIntent no thank you
+NoSummaryIntent nah
+NoSummaryIntent no need
+NoSummaryIntent dont bother
+
