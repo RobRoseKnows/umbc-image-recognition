@@ -1,0 +1,32 @@
+card_title: |
+    Eyelexa
+
+ms_saw: |
+    <speak>
+        Microsoft saw <break /> {{ text }}
+    </speak>
+
+google_ai_read_small: |
+    <speak>
+        Google <w role="amazon:VBD">read</w> the following text <break /> 
+        {{ text }}
+    </speak>
+
+google_ai_read_large: |
+    <speak>
+        Google <w role="amazon:VBD">read</w> a lot of text so I sent all of it
+        to your Alexa App. Here's the start of it <break /> {{ text }}
+    </speak>
+
+text_summary: |
+    I summarized the text into this snippet <break /> {{ summary }}
+
+error_no_txt: |
+    There doesn't seem to be any text in front of you.
+error_auth: |
+    I had some trouble with authentication. Can you check to make sure all
+    the correct API keys are listed in the application?
+error_img: |
+    Looks like I had some trouble with the image capture. Can you make sure
+    the camera is working?
+    

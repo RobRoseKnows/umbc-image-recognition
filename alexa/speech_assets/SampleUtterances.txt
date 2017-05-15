@@ -1,0 +1,35 @@
+DescribeIntent what am I looking at
+DescribeIntent can you describe this
+DescribeIntent describe this
+DescribeIntent whats in front of me
+DescribeIntent whats that
+DescribeIntent what is that
+DescribeIntent can you tell me what this is
+DescribeIntent can you tell me what that is
+DescribeIntent can you describe that
+DescribeIntent what does that look like
+DescribeIntent describe that
+
+ReadIntent whats that say
+ReadIntent what does that say
+ReadIntent can you read this
+ReadIntent read this
+ReadIntent read this to me
+ReadIntent tell me what this says
+ReadIntent can you tell me what that says
+ReadIntent tell me what that says
+ReadIntent read that to me
+ReadIntent read that
+ReadIntent what does this say
+
+SpecificIntent I was looking for { ThingWanted } 
+SpecificIntent { ThingWanted }
+SpecificIntent do you see { ThingWanted }
+SpecificIntent is there a { ThingWanted }
+SpecificIntent have you found a { ThingWanted }
+SpecificIntent have you seen a { ThingWanted }
+SpecificIntent are there any { ThingWanted }
+SpecificIntent I want a { ThingWanted }
+SpecificIntent are there { ThingWanted }
+SpecificIntent a { ThingWanted }
+SpecificIntent the { ThingWanted }
